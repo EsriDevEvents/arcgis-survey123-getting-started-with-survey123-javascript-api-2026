@@ -39,7 +39,7 @@ Practical examples for common Survey123 JS API use cases.
 
     <script>
       const webform = new Survey123WebForm({
-        clientId: "YOUR_CLIENT_ID",
+        // clientId: "YOUR_CLIENT_ID", // Optional
         container: "surveyDiv",
         itemId: "YOUR_PUBLIC_SURVEY_ID",
       });
@@ -57,7 +57,7 @@ Practical examples for common Survey123 JS API use cases.
 
 <script>
   const webform = new Survey123WebForm({
-    clientId: "YOUR_CLIENT_ID",
+    // clientId: "YOUR_CLIENT_ID", // Optional
     container: "mySurvey",
     itemId: "YOUR_SURVEY_ID",
   });
@@ -196,7 +196,7 @@ Practical examples for common Survey123 JS API use cases.
 
 ```javascript
 const webform = new Survey123WebForm({
-  clientId: "YOUR_CLIENT_ID",
+  // clientId: "YOUR_CLIENT_ID", // Optional
   container: "surveyDiv",
   itemId: "YOUR_SURVEY_ID",
 });
@@ -263,7 +263,7 @@ webform.setOnFormLoaded(async () => {
 ### Basic Submission Handler
 
 ```javascript
-webform.on("submitted", (response) => {
+webform.on("formSubmitted", (response) => {
   console.log("Submission successful:", response);
 
   // Show success message
@@ -284,7 +284,7 @@ webform.on("formFailed", (error) => {
 ### Validation Before Submit
 
 ```javascript
-webform.on("submit", (data) => {
+webform.on("formSubmit", (data) => {
   // Custom validation
   if (data.age && data.age < 18) {
     alert("You must be 18 or older to submit this form.");
@@ -479,7 +479,9 @@ webform.on("questionValueChanged", (data) => {
   // data.trigger - "user" (manual input) or "api" (setQuestionValue/setGeopoint)
   // data.path    - full path to the question
   // data.formId  - survey item ID
-  console.log(`[${data.trigger}] ${data.field} = ${JSON.stringify(data.value)}`);
+  console.log(
+    `[${data.trigger}] ${data.field} = ${JSON.stringify(data.value)}`,
+  );
 });
 ```
 
@@ -691,7 +693,7 @@ document.querySelector("#languageSelect").addEventListener("change", (e) => {
 
 ```javascript
 const webform = new Survey123WebForm({
-  clientId: "YOUR_CLIENT_ID",
+  // clientId: "YOUR_CLIENT_ID", // Optional
   container: "surveyDiv",
   itemId: "YOUR_SURVEY_ID",
 });

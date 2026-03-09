@@ -24,10 +24,14 @@ const webform = new Survey123WebForm({
 
 ```javascript
 // By ID
-{ container: "surveyDiv" }
+{
+  container: "surveyDiv";
+}
 
 // By element reference
-{ container: document.getElementById("surveyDiv") }
+{
+  container: document.getElementById("surveyDiv");
+}
 ```
 
 #### `itemId`
@@ -36,7 +40,9 @@ const webform = new Survey123WebForm({
 - **Description:** The ItemId of the Survey123 web form to load from ArcGIS Online or Portal.
 
 ```javascript
-{ itemId: "129132bbedcb490488a162aa996b12323" }
+{
+  itemId: "129132bbedcb490488a162aa996b12323";
+}
 ```
 
 ### Authentication
@@ -44,10 +50,12 @@ const webform = new Survey123WebForm({
 #### `clientId`
 
 - **Type:** `string`
-- **Description:** _(Deprecated)_ Client ID registered on ArcGIS for Developers for domain authorization. Used for OAuth authentication flow.
+- **Description:** _(Optional)_ _(Deprecated)_ Client ID registered on ArcGIS for Developers for domain authorization. Used for OAuth authentication flow.
 
 ```javascript
-{ clientId: "ABC1234567890" }
+{
+  clientId: "ABC1234567890";
+}
 ```
 
 #### `token`
@@ -56,7 +64,9 @@ const webform = new Survey123WebForm({
 - **Description:** Access token for authenticated (private or org-shared) surveys. Required when the survey is not public.
 
 ```javascript
-{ token: "YOUR_ACCESS_TOKEN" }
+{
+  token: "YOUR_ACCESS_TOKEN";
+}
 ```
 
 #### `credential`
@@ -82,7 +92,9 @@ const webform = new Survey123WebForm({
 - **Description:** ArcGIS portal URL. Set this when using ArcGIS Enterprise or a custom portal.
 
 ```javascript
-{ portalUrl: "https://your-portal.example.com/portal" }
+{
+  portalUrl: "https://your-portal.example.com/portal";
+}
 ```
 
 #### `mode`
@@ -152,10 +164,14 @@ const webform = new Survey123WebForm({
 
 ```javascript
 // Fixed width in pixels
-{ width: 800 }
+{
+  width: 800;
+}
 
 // 80% of screen width
-{ width: 0.8 }
+{
+  width: 0.8;
+}
 ```
 
 #### `hideElements`
@@ -171,10 +187,14 @@ const webform = new Survey123WebForm({
 
 ```javascript
 // Hide header and footer
-{ hideElements: ["header", "footer"] }
+{
+  hideElements: ["header", "footer"];
+}
 
 // Hide navigation bar and submit button
-{ hideElements: ["navbar", "submit"] }
+{
+  hideElements: ["navbar", "submit"];
+}
 ```
 
 ### Submission
@@ -186,7 +206,9 @@ const webform = new Survey123WebForm({
 
 ```javascript
 // Auto refresh after 3 seconds
-{ autoRefresh: 3 }
+{
+  autoRefresh: 3;
+}
 ```
 
 #### `isDisabledSubmitToFeatureService`
@@ -196,7 +218,9 @@ const webform = new Survey123WebForm({
 - **Description:** When set to `true`, prevents data from being submitted to the feature service. Useful for preview/testing scenarios or when you want to handle submission externally.
 
 ```javascript
-{ isDisabledSubmitToFeatureService: true }
+{
+  isDisabledSubmitToFeatureService: true;
+}
 ```
 
 ### Versioning
@@ -208,7 +232,9 @@ const webform = new Survey123WebForm({
 - **Description:** Locks the API to a specific version. Use `"latest"` for the most recent version.
 
 ```javascript
-{ version: "3.23" }
+{
+  version: "3.23";
+}
 ```
 
 #### `jsApiVersion`
@@ -218,7 +244,9 @@ const webform = new Survey123WebForm({
 - **Description:** Sets the JS API version to use. Defaults to `"latest"`.
 
 ```javascript
-{ jsApiVersion: "3.22" }
+{
+  jsApiVersion: "3.22";
+}
 ```
 
 ### Advanced
@@ -233,14 +261,14 @@ const webform = new Survey123WebForm({
 new Survey123WebForm({
   container: "survey1",
   itemId: "SURVEY_1_ID",
-  instanceId: "instance-1"
+  instanceId: "instance-1",
 });
 
 // Second survey on same page
 new Survey123WebForm({
   container: "survey2",
   itemId: "SURVEY_2_ID",
-  instanceId: "instance-2"
+  instanceId: "instance-2",
 });
 ```
 
@@ -250,7 +278,9 @@ new Survey123WebForm({
 - **Description:** Host URL used in IE and Edge browsers for sending messages to the parent domain. Only needed for legacy browser support.
 
 ```javascript
-{ host: "https://yourapp.example.com" }
+{
+  host: "https://yourapp.example.com";
+}
 ```
 
 ### Constructor Callbacks
@@ -266,7 +296,7 @@ These callbacks can be set directly in the constructor options as an alternative
 {
   onFormLoaded: (data) => {
     console.log("Form loaded:", data);
-  }
+  };
 }
 ```
 
@@ -280,7 +310,7 @@ These callbacks can be set directly in the constructor options as an alternative
 {
   onFormSubmit: (data) => {
     if (!isValid(data)) return false;
-  }
+  };
 }
 ```
 
@@ -293,7 +323,7 @@ These callbacks can be set directly in the constructor options as an alternative
 {
   onFormSubmitted: (response) => {
     console.log("Submitted:", response.globalId);
-  }
+  };
 }
 ```
 
@@ -306,7 +336,7 @@ These callbacks can be set directly in the constructor options as an alternative
 {
   onFormResized: (size) => {
     console.log("New height:", size.contentHeight);
-  }
+  };
 }
 ```
 
@@ -319,7 +349,7 @@ These callbacks can be set directly in the constructor options as an alternative
 {
   onQuestionValueChanged: (data) => {
     console.log(`${data.field} changed to:`, data.value);
-  }
+  };
 }
 ```
 
@@ -334,7 +364,7 @@ These callbacks can be set directly in the constructor options as an alternative
     if (!data.valid) {
       console.log("Validation error:", data.error);
     }
-  }
+  };
 }
 ```
 

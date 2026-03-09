@@ -27,7 +27,6 @@ The Survey123 JS API allows you to embed Survey123 surveys into webpages using o
 
     <script>
       const webform = new Survey123WebForm({
-        clientId: "YOUR_CLIENT_ID",
         container: "surveyDiv",
         itemId: "YOUR_SURVEY_ITEM_ID",
       });
@@ -38,11 +37,11 @@ The Survey123 JS API allows you to embed Survey123 surveys into webpages using o
 
 ### Key Constructor Options
 
-- `clientId`: OAuth client ID for authentication
 - `container`: DOM element ID or element reference
 - `itemId`: ArcGIS Online survey form item ID
 - `token`: (Optional) Access token for authenticated surveys
 - `portalUrl`: (Optional) Custom portal URL (defaults to ArcGIS Online)
+- `clientId`: (Optional) OAuth client ID for authentication
 
 ## Authentication
 
@@ -75,8 +74,8 @@ webform.setCredential({
 ### Form Lifecycle
 
 - `on('formLoaded', callback)` - Triggered when form loads
-- `on('submit', callback)` - Before form submission
-- `on('submitted', callback)` - After successful submission
+- `on('formSubmit', callback)` - Before form submission
+- `on('formSubmitted', callback)` - After successful submission
 - `on('formFailed', callback)` - On form load/submit failure
 
 ### Question Interaction
@@ -90,11 +89,11 @@ webform.setCredential({
 
 ```javascript
 // Modern event handling (v3.14+)
-webform.on("submit", (data) => {
+webform.on("formSubmit", (data) => {
   console.log("Form submitted:", data);
 });
 
-webform.off("submit", callback); // Remove listener
+webform.off("formSubmit", callback); // Remove listener
 ```
 
 ### Repeat Questions
@@ -126,7 +125,7 @@ webform.on("formLoaded", () => {
 ### Handle Submission
 
 ```javascript
-webform.on("submitted", (response) => {
+webform.on("formSubmitted", (response) => {
   console.log("Submission successful:", response);
   // Redirect or show success message
 });

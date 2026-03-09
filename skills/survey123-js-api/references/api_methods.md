@@ -28,7 +28,7 @@ Create a Survey123WebForm instance.
 
 ```javascript
 const webform = new Survey123WebForm({
-  clientId: "ABC1234567890",
+  // clientId: "ABC1234567890", // Optional
   container: "formDiv",
   itemId: "129132bbedcb490488a162aa996b12323",
 });
@@ -51,8 +51,8 @@ Register an event listener.
 
 - `'formLoaded'`: Triggered when the form is fully loaded.
 - `'formFailed'`: Triggered if the form fails to load or submit.
-- `'submit'`: Triggered before the form is submitted (return `false` to prevent).
-- `'submitted'`: Triggered after successful submission.
+- `'formSubmit'`: Triggered before the form is submitted (return `false` to prevent).
+- `'formSubmitted'`: Triggered after successful submission.
 - `'questionValueChanged'`: Triggered when any question value changes.
   - **Callback Object**:
     ```javascript
@@ -77,7 +77,7 @@ webform.on("formLoaded", (data) => {
   console.log("Form loaded!", data);
 });
 
-webform.on("submitted", (response) => {
+webform.on("formSubmitted", (response) => {
   window.location.href = "/success";
 });
 ```
@@ -141,7 +141,7 @@ webform.setOnFormFailed((error) => {
 
 ### `setOnFormSubmit(callback)`
 
-_Deprecated_. Use `.on('submit', callback)`.
+_Deprecated_. Use `.on('formSubmit', callback)`.
 
 **Parameters:**
 
@@ -160,7 +160,7 @@ webform.setOnFormSubmit((data) => {
 
 ### `setOnFormSubmitted(callback)`
 
-_Deprecated_. Use `.on('submitted', callback)`.
+_Deprecated_. Use `.on('formSubmitted', callback)`.
 
 **Parameters:**
 
