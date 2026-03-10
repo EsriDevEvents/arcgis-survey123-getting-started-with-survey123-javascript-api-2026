@@ -1,0 +1,11 @@
+{
+    "portalUrl": "",
+    "username": "",
+    "password": "",
+    "clientId": "",
+    "surveyItemId": "",
+    "featureServiceUrl": "",
+    "templateItemId": "",
+    "imageAnalysisUrl": "https://aiutils.arcgis.com/api/imageAnalysis",
+    "audioTranscribeUrl": "https://survey123.arcgis.com/api/assistant/audio/transcribe"
+}
